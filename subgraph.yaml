@@ -1,0 +1,72 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Contract
+    network: mumbai
+    source:
+      address: "0x3C27056Aa383b8c890DB0d3D8b57c5750F3dAf00"
+      abi: Contract
+      startBlock: 38366497
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - ApprovalForAll
+        - BatchMetadataUpdate
+        - CreationFeeChange
+        - DislikeFeeChange
+        - DislikeThresholdChange
+        - LikeFeeChange
+        - MetadataUpdate
+        - OwnershipTransferred
+        - ReceivedMATIC
+        - TokenClaimed
+        - TokenDisliked
+        - TokenLiked
+        - TokenMinted
+        - TokenNullified
+        - Transfer
+        - Withdraw
+      abis:
+        - name: Contract
+          file: ./abis/Contract.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,indexed uint256)
+          handler: handleApproval
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+        - event: BatchMetadataUpdate(uint256,uint256)
+          handler: handleBatchMetadataUpdate
+        - event: CreationFeeChange(uint256)
+          handler: handleCreationFeeChange
+        - event: DislikeFeeChange(uint256)
+          handler: handleDislikeFeeChange
+        - event: DislikeThresholdChange(uint256)
+          handler: handleDislikeThresholdChange
+        - event: LikeFeeChange(uint256)
+          handler: handleLikeFeeChange
+        - event: MetadataUpdate(uint256)
+          handler: handleMetadataUpdate
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: ReceivedMATIC(indexed address,uint256)
+          handler: handleReceivedMATIC
+        - event: TokenClaimed(indexed uint256,indexed address,uint256)
+          handler: handleTokenClaimed
+        - event: TokenDisliked(indexed uint256,indexed address)
+          handler: handleTokenDisliked
+        - event: TokenLiked(indexed uint256,indexed address)
+          handler: handleTokenLiked
+        - event: TokenMinted(indexed uint256,indexed address)
+          handler: handleTokenMinted
+        - event: TokenNullified(indexed uint256,uint256)
+          handler: handleTokenNullified
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+        - event: Withdraw(indexed address,uint256)
+          handler: handleWithdraw
+      file: ./src/contract.ts
