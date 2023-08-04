@@ -4,7 +4,6 @@ type Token @entity {
   expression: String!
   likes: BigInt!
   dislikes: BigInt!
-  feesAccrued: BigInt!
   tokenURI: String!
   createdAtTimestamp: BigInt!
   minter: User!
