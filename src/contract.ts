@@ -106,6 +106,7 @@ export function handleMetadataUpdate(event: MetadataUpdate): void {
   let token = Token.load(tokenId)
   if(token == null) { return }
   token.tokenURI = contract.tokenURI(event.params._tokenId)
+  token.expression = contract.getExpression(event.params._tokenId)
   token.save()
 }
 
